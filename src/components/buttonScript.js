@@ -23,7 +23,7 @@ export const NextButton = ({ listData, setListData }) => {
     if (listData.length > idClick) {
       setIdClick(idClick + 1);
       setListData((listData) => {
-        listData.map((item) => {
+        listData.forEach((item) => {
           if (item.id === idClick + 1) {
             item.status = true;
           } else if (item.id !== idClick + 1) {
@@ -39,7 +39,7 @@ export const NextButton = ({ listData, setListData }) => {
     if (idClick > 1) {
       setIdClick(idClick - 1);
       setListData((listData) => {
-        listData.map((item) => {
+        listData.forEach((item) => {
           if (item.id === idClick - 1) {
             item.status = true;
           } else if (item.id !== idClick -1) {
