@@ -38,7 +38,7 @@ const initialState = {
       status: false,
     },
   ],
-  counter: -1,
+  counter: 0,
 };
 
 export const list = createSlice({
@@ -57,7 +57,7 @@ export const list = createSlice({
       // добавляем к счетчику и делаем всё неактивным
       // проверяем соответствие индекса и если совпадает с кликом меняем статус если счётчик сделать с 0 то получается по индексу будет опережать события
       state.data = state.data.map((element, index) => {
-        return index === state.counter ? { ...element, status: true } : element;
+        return index+1 === state.counter ? { ...element, status: true } : element;
       });
       // проверяем соответствие индекса и если совпадает с кликом меняем статус если счётчик сделать с 0 то получается по индексу будет опережать события
     },
@@ -68,7 +68,7 @@ export const list = createSlice({
         return { ...element, status: false };
       });
       state.data = state.data.map((element, index) => {
-        return index === state.counter ? { ...element, status: true } : element;
+        return index+1 === state.counter ? { ...element, status: true } : element;
       });
     },
   },

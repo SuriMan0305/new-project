@@ -18,7 +18,6 @@ const Icon = styled.svg`
 `;
 
 export const NextButton = () => {
-  // const [idClick, setIdClick] = useState(0);
 
   const dispatch = useDispatch()
 

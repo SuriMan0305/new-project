@@ -28,8 +28,8 @@ const ListItem = styled.div`
 
 export const MassiveData = () => {
 
-  const listData = useSelector((state) => state.list.data)
-  
+  const listData = useSelector((state) => state.list.data) // импортируем State из Store и передаем их в переменную
+
   console.log(listData);
   return (
     <div>
