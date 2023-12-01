@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { setNext, setPrev } from "../store/slices/list";
 
 const Container = styled.div`
   display: flex;
@@ -16,47 +17,22 @@ const Icon = styled.svg`
   }
 `;
 
-export const NextButton = ({ listData, setListData }) => {
-  const [idClick, setIdClick] = useState(0);
+export const NextButton = () => {
+
+  const dispatch = useDispatch()
 
   const nextClick = () => {
-    if (listData.length > idClick) {
-      setIdClick(idClick + 1);
-      setListData((listData) => {
-        listData.forEach((item) => {
-          if (item.id === idClick + 1) {
-            item.status = true;
-          } else if (item.id !== idClick + 1) {
-            item.status = false;
-          }
-        });
-        return [...listData];
-      });
-    }
+    dispatch(setNext())
   };
 
   const prevClick = () => {
-    if (idClick > 1) {
-      setIdClick(idClick - 1);
-      setListData((listData) => {
-        listData.forEach((item) => {
-          if (item.id === idClick - 1) {
-            item.status = true;
-          } else if (item.id !== idClick -1) {
-            item.status = false;
-          }
-        });
-        return [...listData];
-      });
-    }
+    dispatch(setPrev())
   };
 
   return (
     <Container>
       <Icon style={{transform: 'rotate(180deg)'}}
-        onClick={() => {
-          prevClick();
-        }}
+        onClick={prevClick}
         width="30px"
         height="30px"
         viewBox="0 0 24 24"
@@ -78,9 +54,7 @@ export const NextButton = ({ listData, setListData }) => {
         />
       </Icon>
       <Icon
-        onClick={() => {
-          nextClick();
-        }}
+        onClick={nextClick}
         width="30px"
         height="30px"
         viewBox="0 0 24 24"
