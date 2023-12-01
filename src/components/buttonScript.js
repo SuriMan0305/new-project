@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -16,47 +17,47 @@ const Icon = styled.svg`
   }
 `;
 
-export const NextButton = ({ listData, setListData }) => {
+export const NextButton = () => {
   const [idClick, setIdClick] = useState(0);
 
-  const nextClick = () => {
-    if (listData.length > idClick) {
-      setIdClick(idClick + 1);
-      setListData((listData) => {
-        listData.forEach((item) => {
-          if (item.id === idClick + 1) {
-            item.status = true;
-          } else if (item.id !== idClick + 1) {
-            item.status = false;
-          }
-        });
-        return [...listData];
-      });
-    }
-  };
+  // const nextClick = () => {
+  //   if (listData.length > idClick) {
+  //     setIdClick(idClick + 1);
+  //     setListData((listData) => {
+  //       listData.forEach((item) => {
+  //         if (item.id === idClick + 1) {
+  //           item.status = true;
+  //         } else if (item.id !== idClick + 1) {
+  //           item.status = false;
+  //         }
+  //       });
+  //       return [...listData];
+  //     });
+  //   }
+  // };
 
-  const prevClick = () => {
-    if (idClick > 1) {
-      setIdClick(idClick - 1);
-      setListData((listData) => {
-        listData.forEach((item) => {
-          if (item.id === idClick - 1) {
-            item.status = true;
-          } else if (item.id !== idClick -1) {
-            item.status = false;
-          }
-        });
-        return [...listData];
-      });
-    }
-  };
+  // const prevClick = () => {
+  //   if (idClick > 1) {
+  //     setIdClick(idClick - 1);
+  //     setListData((listData) => {
+  //       listData.forEach((item) => {
+  //         if (item.id === idClick - 1) {
+  //           item.status = true;
+  //         } else if (item.id !== idClick -1) {
+  //           item.status = false;
+  //         }
+  //       });
+  //       return [...listData];
+  //     });
+  //   }
+  // };
 
   return (
     <Container>
       <Icon style={{transform: 'rotate(180deg)'}}
-        onClick={() => {
-          prevClick();
-        }}
+        // onClick={() => {
+        //   prevClick();
+        // }}
         width="30px"
         height="30px"
         viewBox="0 0 24 24"
@@ -78,9 +79,9 @@ export const NextButton = ({ listData, setListData }) => {
         />
       </Icon>
       <Icon
-        onClick={() => {
-          nextClick();
-        }}
+        // onClick={() => {
+        //   nextClick();
+        // }}
         width="30px"
         height="30px"
         viewBox="0 0 24 24"

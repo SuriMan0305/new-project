@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const Container = styled.ul`
@@ -25,7 +26,9 @@ const ListItem = styled.div`
   }
 `;
 
-export const MassiveData = ({listData}) => {
+export const MassiveData = () => {
+
+  const listData = useSelector((state) => state.list.data)
 
   return (
     <div>
