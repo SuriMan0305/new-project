@@ -29,7 +29,8 @@ const ListItem = styled.div`
 export const MassiveData = () => {
 
   const listData = useSelector((state) => state.list.data)
-
+  
+  console.log(listData);
   return (
     <div>
       <Container>

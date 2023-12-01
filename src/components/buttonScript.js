@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { setNext, setPrev } from "../store/slices/list";
 
 const Container = styled.div`
   display: flex;
@@ -18,46 +18,22 @@ const Icon = styled.svg`
 `;
 
 export const NextButton = () => {
-  const [idClick, setIdClick] = useState(0);
+  // const [idClick, setIdClick] = useState(0);
 
-  // const nextClick = () => {
-  //   if (listData.length > idClick) {
-  //     setIdClick(idClick + 1);
-  //     setListData((listData) => {
-  //       listData.forEach((item) => {
-  //         if (item.id === idClick + 1) {
-  //           item.status = true;
-  //         } else if (item.id !== idClick + 1) {
-  //           item.status = false;
-  //         }
-  //       });
-  //       return [...listData];
-  //     });
-  //   }
-  // };
+  const dispatch = useDispatch()
 
-  // const prevClick = () => {
-  //   if (idClick > 1) {
-  //     setIdClick(idClick - 1);
-  //     setListData((listData) => {
-  //       listData.forEach((item) => {
-  //         if (item.id === idClick - 1) {
-  //           item.status = true;
-  //         } else if (item.id !== idClick -1) {
-  //           item.status = false;
-  //         }
-  //       });
-  //       return [...listData];
-  //     });
-  //   }
-  // };
+  const nextClick = () => {
+    dispatch(setNext())
+  };
+
+  const prevClick = () => {
+    dispatch(setPrev())
+  };
 
   return (
     <Container>
       <Icon style={{transform: 'rotate(180deg)'}}
-        // onClick={() => {
-        //   prevClick();
-        // }}
+        onClick={prevClick}
         width="30px"
         height="30px"
         viewBox="0 0 24 24"
@@ -79,9 +55,7 @@ export const NextButton = () => {
         />
       </Icon>
       <Icon
-        // onClick={() => {
-        //   nextClick();
-        // }}
+        onClick={nextClick}
         width="30px"
         height="30px"
         viewBox="0 0 24 24"

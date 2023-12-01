@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { NextButton } from "./components/buttonScript";
 import { MassiveData } from "./components/liastArray";
 
